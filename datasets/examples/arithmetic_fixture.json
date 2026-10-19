@@ -1,0 +1,12 @@
+{
+  "name": "Arithmetic software fixture (not a research benchmark)",
+  "version": "1.0.0",
+  "provenance": "Project-authored exact-integer checks. Answers independently recomputed with Python math; definitions checked against Python official documentation on 2026-10-19. verified refers only to these ground-truth answers, not representativeness or model performance.",
+  "verified": true,
+  "questions": [
+    {"id": "fixture-factorial-5", "question": "What is 5 factorial? Return only the integer.", "answer": "120", "category": "arithmetic_fixture", "source_url": "https://docs.python.org/3/library/math.html"},
+    {"id": "fixture-gcd-18-24", "question": "What is the greatest common divisor of 18 and 24? Return only the integer.", "answer": "6", "category": "arithmetic_fixture", "source_url": "https://docs.python.org/3/library/math.html"},
+    {"id": "fixture-comb-5-2", "question": "How many ways can 2 items be chosen from 5 without repetition and without regard to order? Return only the integer.", "answer": "10", "category": "arithmetic_fixture", "source_url": "https://docs.python.org/3/library/math.html"},
+    {"id": "fixture-isqrt-81", "question": "What is the integer square root of 81? Return only the integer.", "answer": "9", "category": "arithmetic_fixture", "source_url": "https://docs.python.org/3/library/math.html"}
+  ]
+}

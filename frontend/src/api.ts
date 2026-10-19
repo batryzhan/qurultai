@@ -1,0 +1,11 @@
+export type Language='kk'|'ru'|'en';
+export interface Argument {id:string;agent:'tole'|'kazybek'|'aiteke';stage:string;round:number;content:string;confidence:number|null;model:string;token_usage:number|null}
+export interface Evidence {id:string;title:string;url:string;snippet:string;claim:string;verification_status:string;relationship:string}
+export interface Disagreement {id:string;classification:string;description:string;agent_positions:Record<string,string>;status:string;argument_ids:string[]}
+export interface Session {id:string;question:string;mode:'demo'|'live';simulated:boolean;status:string;stage:string;language:Language;rounds:number;evidence_enabled:boolean;domain:string;created_at:string;arguments:Argument[];evidence:Evidence[];disagreements:Disagreement[];synthesis:{answer:string;limitations:string[];unresolved_disagreements:string[];confidence:number|null}|null;error:string|null}
+export interface Dataset {id:string;name:string;version:string;provenance:string;verified:boolean;questions:{id:string;question:string;answer:string;category:string;source_url:string}[];created_at:string}
+export interface Metrics {accuracy:number|null;brier_score:number|null;ece:number|null;count:number;failed:number;mean_latency_ms:number|null}
+export interface Benchmark {id:string;dataset_id:string;status:string;simulated:boolean;config:Record<string,unknown>;created_at:string;results:{question_id:string;strategy:string;raw_answer:string;normalized_answer:string;is_correct:boolean|null;confidence:number|null;latency_ms:number;token_usage:number|null;error:string|null}[];metrics:Record<string,Metrics>;error:string|null}
+export interface Config {configured:boolean;endpoint:string;models:Record<string,string>;simulated_available:boolean}
+export async function api<T>(path:string,body?:unknown):Promise<T>{const response=await fetch('/api/v1'+path,{...(body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})});const data=await response.json();if(!response.ok)throw new Error(data.error?.message||data.detail?.[0]?.msg||'Request failed');return data as T;}
+export const stages=['created','independent_analysis','evidence_gathering','initial_arguments','cross_examination','revision','synthesis','completed'];

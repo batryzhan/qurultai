@@ -1,0 +1,194 @@
+{
+  "id": "86335be1-f065-450e-87d0-9ae40712ceee",
+  "dataset_id": "0955bd8f-8a95-4bc2-895f-b177660910e3",
+  "status": "completed",
+  "simulated": true,
+  "config": {
+    "dataset_id": "0955bd8f-8a95-4bc2-895f-b177660910e3",
+    "mode": "demo",
+    "strategies": [
+      "single",
+      "majority",
+      "debate"
+    ],
+    "repetitions": 1,
+    "dataset_version": "1.0.0",
+    "models": {
+      "tole": "",
+      "kazybek": "",
+      "aiteke": ""
+    },
+    "prompt_version": "council-v1",
+    "sampling": {
+      "provider_defaults": true,
+      "max_tokens": 1200
+    },
+    "evaluation_method": "casefold_whitespace_exact_match",
+    "evidence_access": "none for every strategy",
+    "confidence": "model reported; uncalibrated",
+    "environment": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "official_research_eligible": false
+  },
+  "created_at": "2026-10-19T15:11:40.829507+00:00",
+  "results": [
+    {
+      "question_id": "fixture-factorial-5",
+      "strategy": "single",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.734
+    },
+    {
+      "question_id": "fixture-factorial-5",
+      "strategy": "majority",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": null,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 1.602
+    },
+    {
+      "question_id": "fixture-factorial-5",
+      "strategy": "debate",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 163.558
+    },
+    {
+      "question_id": "fixture-gcd-18-24",
+      "strategy": "single",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.133
+    },
+    {
+      "question_id": "fixture-gcd-18-24",
+      "strategy": "majority",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": null,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.233
+    },
+    {
+      "question_id": "fixture-gcd-18-24",
+      "strategy": "debate",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 136.486
+    },
+    {
+      "question_id": "fixture-comb-5-2",
+      "strategy": "single",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.198
+    },
+    {
+      "question_id": "fixture-comb-5-2",
+      "strategy": "majority",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": null,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.191
+    },
+    {
+      "question_id": "fixture-comb-5-2",
+      "strategy": "debate",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 138.587
+    },
+    {
+      "question_id": "fixture-isqrt-81",
+      "strategy": "single",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.163
+    },
+    {
+      "question_id": "fixture-isqrt-81",
+      "strategy": "majority",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": null,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 0.232
+    },
+    {
+      "question_id": "fixture-isqrt-81",
+      "strategy": "debate",
+      "raw_answer": "Insufficient evidence to establish a factual answer.",
+      "normalized_answer": "insufficient evidence to establish a factual answer",
+      "is_correct": false,
+      "confidence": 0.5,
+      "token_usage": null,
+      "error": null,
+      "latency_ms": 145.834
+    }
+  ],
+  "metrics": {
+    "single": {
+      "accuracy": 0.0,
+      "brier_score": 0.25,
+      "ece": 0.5,
+      "count": 4,
+      "failed": 0,
+      "mean_latency_ms": 0.307
+    },
+    "majority": {
+      "accuracy": 0.0,
+      "brier_score": null,
+      "ece": null,
+      "count": 4,
+      "failed": 0,
+      "mean_latency_ms": 0.5645
+    },
+    "debate": {
+      "accuracy": 0.0,
+      "brier_score": 0.25,
+      "ece": 0.5,
+      "count": 4,
+      "failed": 0,
+      "mean_latency_ms": 146.11624999999998
+    }
+  },
+  "error": null
+}
