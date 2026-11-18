@@ -32,6 +32,8 @@ def test_persistence_and_live_failure(tmp_path, monkeypatch):
         "ALEM_MODEL_AITEKE",
     ):
         monkeypatch.delenv(name, raising=False)
+    from app.schemas import configuration
+    assert not configuration()["configured"]
     url = f"sqlite:///{tmp_path}/test.db"
     with TestClient(create_app(url)) as c:
         s = c.post("/api/v1/sessions", json={"question": "A live question", "mode": "live"}).json()

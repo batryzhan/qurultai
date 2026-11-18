@@ -7,8 +7,9 @@ from sqlalchemy import create_engine
 from alembic import context
 from app.storage import Base
 
-load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=False)
 config = context.config
+if config.attributes.get("connection") is None:
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=False)
 target_metadata = Base.metadata
 url = os.getenv("DATABASE_URL", config.get_main_option("sqlalchemy.url"))
 if config.attributes.get("connection") is not None:

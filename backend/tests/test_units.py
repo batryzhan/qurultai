@@ -199,7 +199,7 @@ def test_stage_directives_and_frozen_prompt_metadata():
     assert "changed conclusions" in revision and "remaining uncertainties" in revision
     assert "Preserve unresolved disagreements" in synthesis
     assert "source IDs or URLs" in synthesis and "new propositions" in synthesis
-    assert PROMPT_VERSION == "council-v2"
+    assert PROMPT_VERSION == "council-v3"
     config = benchmark_config({"mode": "demo"}, {"version": "1", "verified": False})
     frozen = config["prompt_snapshot"]
     assert frozen["version"] == PROMPT_VERSION
@@ -211,3 +211,26 @@ def test_stage_directives_and_frozen_prompt_metadata():
         assert frozen["roles"]["tole"] == original
     finally:
         ROLES["tole"] = original
+
+@pytest.mark.parametrize("raw,expected", [
+    ('```json\n{"content":"Reason","answer":"4","confidence":null}\n```', 'Reason'),
+    ('A useful plain-language response.', 'A useful plain-language response.'),
+])
+async def test_council_accepts_common_model_response_formats(monkeypatch, raw, expected):
+    monkeypatch.setenv('ALEM_API_KEY', 'test')
+    for agent in ('TOLE', 'KAZYBEK', 'AITEKE'):
+        monkeypatch.setenv('ALEM_MODEL_' + agent, 'configured')
+    transport = httpx.MockTransport(lambda request: httpx.Response(200, json={'choices': [{'message': {'content': raw}}]}))
+    reply = await Provider('live', transport).ask('tole', 'question', 'initial_arguments')
+    assert reply['content'] == expected
+    assert reply['answer']
+
+async def test_council_recovers_complete_content_from_truncated_json(monkeypatch):
+    monkeypatch.setenv('ALEM_API_KEY', 'test')
+    for agent in ('TOLE', 'KAZYBEK', 'AITEKE'):
+        monkeypatch.setenv('ALEM_MODEL_' + agent, 'configured')
+    raw = '{"content":"A complete suggestion.","answer":"unfinished'
+    transport = httpx.MockTransport(lambda request: httpx.Response(200, json={'choices': [{'message': {'content': raw}}]}))
+    reply = await Provider('live', transport).ask('tole', 'question', 'initial_arguments')
+    assert reply['content'] == 'A complete suggestion.'
+    assert reply['confidence'] is None
